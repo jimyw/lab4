@@ -9,6 +9,8 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
+var project = require('./routes/project');  // load all controllers in routes/project.js
+
 // Example route
 // var user = require('./routes/user');
 
@@ -36,6 +38,9 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/project/:name',project.viewProject);    // "/project" register the URL localhost:3000/project, where whatever is in the :name location in the URL is assigned to the variable "name"
+// project.viewProject calls the project.viewProject() function when the URL is requested
+
 // Example route
 // app.get('/users', user.list);
 
